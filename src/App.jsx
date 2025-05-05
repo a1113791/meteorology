@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div>{page === "weather" && <Meteorology />}</div>
+      {/* <div>{page === "weather" && <Meteorology />}</div>
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -41,7 +41,7 @@ function App() {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> */}
     </>
   );
 }
