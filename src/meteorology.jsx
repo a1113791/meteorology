@@ -1,4 +1,27 @@
-function meteorology() {
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const Auth = import.meta.env.VITE_AUTHORIZATION;
+
+function Meteorology() {
+  const [product, setProduct] = useState([]);
+
+  const getWeather = async () => {
+    try {
+      const res = await axios.get(
+        `${BASE_URL}/F-C0032-001?Authorization=${Auth}`
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getWeather();
+  }, []);
+
   return (
     <>
       <div className="container">
@@ -34,4 +57,4 @@ function meteorology() {
     </>
   );
 }
-export default meteorology;
+export default Meteorology;

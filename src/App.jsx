@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Meteorology from "./meteorology.jsx";
+import Meteorology from "./Meteorology.jsx";
 
 function App() {
   const [page, setPage] = useState();
