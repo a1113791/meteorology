@@ -35,22 +35,42 @@ function Meteorology() {
                   <div className="card-header h4">{cityData.locationName}</div>
                   <div className="card-body">
                     <div className="row row-cols-3 g-2">
-                      <div className="col">
-                        <div className="h5 my-2">23日</div>
-                        <p>
-                          下午6:00
-                          <br />~<br />
-                          早上6點
-                        </p>
-                        {/* <img src="" alt="" /> */}
-                        <div>
-                          <p>多雲時晴</p>
-                        </div>
-                        <div>
-                          <i className="bi bi-umbrella-fill"></i>
-                          <span>10%</span>
-                        </div>
-                      </div>
+                      {cityData.weatherElement[0].time.map((time, index) => {
+                        return (
+                          <div className="col" key={index}>
+                            <div className="h5 my-2">
+                              {new Date(time.startTime).toLocaleDateString(
+                                undefined,
+                                { month: "long", day: "numeric" }
+                              )}
+                            </div>
+                            <p>
+                              {new Date(time.startTime).toLocaleTimeString(
+                                undefined,
+                                { hour: "numeric", minute: "numeric" }
+                              )}
+                              <br />~<br />
+                              {new Date(time.endTime).toLocaleTimeString(
+                                undefined,
+                                { hour: "numeric", minute: "numeric" }
+                              )}
+                            </p>
+                            <div>
+                              <p>{time.parameter.parameterName}</p>
+                            </div>
+                            <div>
+                              <i className="bi bi-umbrella-fill"></i>
+                              <span>
+                                {
+                                  cityData.weatherElement[1].time[index]
+                                    .parameter.parameterName
+                                }
+                                %
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
